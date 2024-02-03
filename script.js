@@ -2,8 +2,11 @@
 let rock = "rock";
 let paper = "paper";
 let scissors = "scissors";
-let playerChoice = "rOck";
+let playerChoice = prompt("Enter Rock, Paper, or Scissors");
 
+// Paramaters:
+playerSelection = playerChoice.toLowerCase();
+computerSelection = getComputerChoice();
 
 // Computer will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. 
 function getComputerChoice (){
@@ -20,9 +23,6 @@ function getComputerChoice (){
 
 // game
 function game (playerSelection, computerSelection){
-    playerSelection = playerChoice.toLowerCase();
-    computerSelection = getComputerChoice();
-
     console.log(computerSelection);
 
     if (playerSelection === rock && computerSelection === rock || playerSelection === paper && computerSelection === paper || playerSelection === scissors && computerSelection === scissors){
@@ -34,9 +34,25 @@ function game (playerSelection, computerSelection){
     else if (playerSelection === rock && computerSelection === paper){
         return "You lost! Paper beats rock."
     }
+    else if (playerSelection === paper && computerSelection === rock){
+        return "You won! Paper beats Rock.";
+    }
+    else if (playerSelection === paper && computerSelection === scissors){
+        return "You lost! Scissors beats Paper.";
+    }
+    else if (playerSelection === scissors && computerSelection === paper){
+        return "You won! Scissors beats Paper.";
+    }
+    else if (playerSelection === scissors && computerSelection === rock){
+        return "You lost! Rock beats scissors.";
+    }
     else {
-        return "You didn't play rock!";
+        return "Check you spelling!"
     }
 }
 
-console.log(game())
+console.log(game(playerSelection, computerSelection))
+
+function playGame(){
+
+}
