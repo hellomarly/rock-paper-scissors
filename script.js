@@ -55,13 +55,14 @@ function playGame(){
         console.log(game(playerSelection, computerSelection))
       }
     
-    console.log(playerWin);
-    console.log(computerWin);
     if (playerWin > computerWin){
         return "You won again against the computer with a score of " + playerWin + " vs " + computerWin + ".";
     }
-    else {
+    else if (computerWin > playerWin){
         return "You lost again against the computer with a score of " + computerWin + " vs " + playerWin + ".";
+    }
+    else {
+        return "You tied with the computer with a score of " + playerWin + " vs " + computerWin + ".";
     }
 }
 
