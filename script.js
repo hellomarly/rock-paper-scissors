@@ -20,41 +20,28 @@ function getComputerChoice (){
 let computerWin = 0;
 let playerWin = 0;
 
-
 // game
 function game (playerSelection, computerSelection){
+    // count the number of times won
+    let won = "You won";
+    let lost = "You lost";
+
+    // result of game: tie, win, lose
     if (playerSelection === rock && computerSelection === rock || playerSelection === paper && computerSelection === paper || playerSelection === scissors && computerSelection === scissors){
         return "Tied";
     }
-    else if (playerSelection === rock && computerSelection === scissors){
-        playerWin = playerWin++;
-        return "You won! Rock beats scissors."
+    else if (playerSelection === rock && computerSelection === scissors || playerSelection === paper && computerSelection === rock || playerSelection === scissors && computerSelection === paper){
+        playerWin = playerWin + 1;
+        return won + ", " + playerSelection + " beats " + computerSelection + ".";
     }
-    else if (playerSelection === rock && computerSelection === paper){
-        computerWin = computerWin++;
-        return "You lost! Paper beats rock."
-    }
-    else if (playerSelection === paper && computerSelection === rock){
-        playerWin = playerWin++;
-        return "You won! Paper beats Rock.";
-    }
-    else if (playerSelection === paper && computerSelection === scissors){
-        computerWin = computerWin++;
-        return "You lost! Scissors beats Paper.";
-    }
-    else if (playerSelection === scissors && computerSelection === paper){
-        playerWin = playerWin++;
-        return "You won! Scissors beats Paper.";
-    }
-    else if (playerSelection === scissors && computerSelection === rock){
-        computerWin = computerWin++;
-        return "You lost! Rock beats scissors.";
+    else if (playerSelection === rock && computerSelection === paper || playerSelection === paper && computerSelection === scissors || playerSelection === scissors && computerSelection === rock){
+        computerWin = computerWin + 1;
+        return lost + ", " + computerSelection + " beats " + playerSelection + "."
     }
     else {
         return "Check you spelling!"
     }
 }
-
 
 // Who wins after 5 games
 function playGame(){
@@ -70,6 +57,12 @@ function playGame(){
     
     console.log(playerWin);
     console.log(computerWin);
+    if (playerWin > computerWin){
+        return "You won again against the computer with a score of " + playerWin + " vs " + computerWin + ".";
+    }
+    else {
+        return "You lost again against the computer with a score of " + computerWin + " vs " + playerWin + ".";
+    }
 }
 
 console.log(playGame());
